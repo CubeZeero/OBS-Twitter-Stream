@@ -7,5 +7,9 @@ OBSなどの配信ソフトのブラウザソースで特定のキーワード�
 
 ## 使い方
 
+使い方については以下のwikiを御覧ください
+
+[https://github.com/CubeZeero/OBS-Twitter-Stream/wiki](https://github.com/CubeZeero/OBS-Twitter-Stream/wiki)
+
 ### License
 MIT License
