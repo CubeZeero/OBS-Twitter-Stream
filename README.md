@@ -12,6 +12,8 @@ OBSなどの配信ソフトのブラウザソースで特定のキーワード�
 
 ## ダウンロード
 
+Windows版のみ
+
 [こちらから最新版をダウンロード](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/download/v1.0/obs-twitter-stream_v1.zip)
 
 ### License
