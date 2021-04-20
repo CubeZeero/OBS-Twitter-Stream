@@ -1,5 +1,4 @@
 # OBS-Twitter-Stream
-View Twitter keywords in OBS browser source
 
 OBSなどの配信ソフトのブラウザソースで特定のキーワードを含んだツイートを表示します
 
