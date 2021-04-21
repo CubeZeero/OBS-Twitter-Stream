@@ -16,5 +16,13 @@ Windows版のみ
 
 [こちらから最新版をダウンロード (最新版 v1.0)](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/download/v1.0/obs-twitter-stream_v1.zip)
 
+## MacOS版について
+
+MacOS版のリリースについては今の所予定はありません
+
+現在Wineでの動作を確認しています
+
+Wineで動いた！うぇえええええいほぉおあああ！という方はご連絡いただければ幸いです
+
 ### License
 MIT License
