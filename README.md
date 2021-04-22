@@ -17,6 +17,7 @@ Windows版のみ
 [こちらから最新版をダウンロード (最新版 v1.2)](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/download/v1.2/obs-twitter-stream_v1.2.zip)
 
 不具合の修正などの最新情報は以下のツイートリストから確認してください
+
 [https://twitter.com/cubezeero/status/1384905072132435972](https://twitter.com/cubezeero/status/1384905072132435972)
 
 ## MacOS版について
