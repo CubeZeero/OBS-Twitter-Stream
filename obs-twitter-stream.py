@@ -44,7 +44,8 @@ if main_config.get('MainConfig', 'OAuth2_sw') == '0':
     }
 
     main_config['MainConfig'] = {
-        'OAuth2_sw': 1
+        'OAuth2_sw': 1,
+        'ver': main_config.get('MainConfig', 'ver')
     }
 
     with open('data/ini/config.ini', 'w') as cw:
