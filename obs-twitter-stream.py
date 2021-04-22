@@ -8,22 +8,23 @@ from websocket_server import WebsocketServer
 import time
 import os
 
-os.system('title OBS-Twitter-Stream')
-
 consumer_key = ''
 consumer_secret = ''
 callback_url = 'oob'
 
-tweet_send_cnt = 10
+tweet_send_cnt = 0
 random_list = []
 tweet_list_text = []
 random_list = []
-relast_id = 0
+relast_id = '0'
 
 searchword_loop_cnt = 0
+searchword_loop_cnt_tmp = 0
 
 main_config = configparser.ConfigParser()
 main_config.read('data/ini/config.ini', encoding='utf-8')
+
+os.system('title OBS-Twitter-Stream v' + main_config.get('MainConfig', 'ver'))
 
 if main_config.get('MainConfig', 'OAuth2_sw') == '0':
 
@@ -68,24 +69,34 @@ search_word = input('\nPlease enter a search word\n検索ワードを入力し�
 
 print('\n')
 
-def search_word_api(search_word_def):
+def search_word_api(search_word_def, si):
 
     tweet_list = []
+
     global searchword_loop_cnt
+    global relast_id
+
     searchword_loop_cnt = 0
 
-    tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = 10, include_entities = False)
+    if si == '0':
+        tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = random.randint(0,5), include_entities = False)
+    else:
+        tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = random.randint(0,10), include_entities = False, since_id = si)
 
     for result in tweets:
         if searchword_loop_cnt == 0:
-            relast_id = result.id
+            relast_id = result.id_str
 
         tweet_list.append(result.text +' (@'+ result.user.name +')')
         searchword_loop_cnt += 1
 
     return tweet_list
 
-search_word_api
+tweet_send_cnt = 0
+tweet_list_text = []
+random_list = []
+
+tweet_list_text = search_word_api(search_word, '0')
 
 def new_client(client, server):
 
@@ -93,11 +104,6 @@ def new_client(client, server):
     global random_list
     global tweet_list_text
     global random_list
-
-    tweet_send_cnt = 10
-    random_list = []
-    tweet_list_text = []
-    random_list = []
 
     print('\nConnection is complete\n接続が完了しました\n')
     time.sleep(2)
@@ -113,28 +119,50 @@ def message_received(client, server, message):
     global tweet_list_text
     global random_list
     global searchword_loop_cnt
+    global relast_id
 
     if message == 'RT':
 
         if searchword_loop_cnt != 0:
 
-            if tweet_send_cnt == 10:
+            if tweet_send_cnt == searchword_loop_cnt:
                 time.sleep(0.5)
 
                 tweet_send_cnt = 0
                 tweet_list_text = []
                 random_list = []
 
-                tweet_list_text = search_word_api(search_word)
+                tweet_list_text = search_word_api(search_word, relast_id)
 
-                while True:
-                    random_int = random.randint(0,searchword_loop_cnt -1)
-                    if random_int not in random_list:
-                        server.send_message(client, tweet_list_text[random_int])
-                        break
+                if searchword_loop_cnt != 0:
 
-                random_list.append(random_int)
-                tweet_send_cnt += 1
+                    while True:
+                        random_int = random.randint(0,searchword_loop_cnt -1)
+                        if random_int not in random_list:
+                            server.send_message(client, tweet_list_text[random_int])
+                            break
+
+                    random_list.append(random_int)
+                    tweet_send_cnt += 1
+
+                else:
+
+                    print('4')
+
+                    tweet_send_cnt = 0
+                    tweet_list_text = []
+                    random_list = []
+
+                    tweet_list_text = search_word_api(search_word, '0')
+
+                    while True:
+                        random_int = random.randint(0,searchword_loop_cnt -1)
+                        if random_int not in random_list:
+                            server.send_message(client, tweet_list_text[random_int])
+                            break
+
+                    random_list.append(random_int)
+                    tweet_send_cnt += 1
 
             else:
 
