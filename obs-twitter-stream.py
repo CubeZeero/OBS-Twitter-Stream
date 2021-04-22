@@ -147,8 +147,6 @@ def message_received(client, server, message):
 
                 else:
 
-                    print('4')
-
                     tweet_send_cnt = 0
                     tweet_list_text = []
                     random_list = []
