@@ -17,6 +17,11 @@ random_list = []
 tweet_list_text = []
 random_list = []
 relast_id = '0'
+relast_id_tmp = ''
+checkid = ''
+checkid_loop = 0
+checkid_sw = 0
+
 
 searchword_loop_cnt = 0
 searchword_loop_cnt_tmp = 0
@@ -76,13 +81,15 @@ def search_word_api(search_word_def, si):
 
     global searchword_loop_cnt
     global relast_id
+    global checkid_sw
 
     searchword_loop_cnt = 0
 
     if si == '0':
-        tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = random.randint(0,5), include_entities = False)
+        tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = random.randint(10,50), include_entities = False)
     else:
-        tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = random.randint(0,10), include_entities = False, since_id = si)
+        #前回取得したツイートより最新のツイートを取得する
+        tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = random.randint(5,10), include_entities = False, since_id = si)
 
     for result in tweets:
         if searchword_loop_cnt == 0:
@@ -93,26 +100,45 @@ def search_word_api(search_word_def, si):
 
     return tweet_list
 
-tweet_send_cnt = 0
-tweet_list_text = []
-random_list = []
+def checkid_relast(search_word_def):
 
-tweet_list_text = search_word_api(search_word, '0')
+    relast_id_return = ''
 
+    tweets = api.search(q = search_word_def  + ' -filter:retweets', result_type = 'recent', count = 1, include_entities = False)
+
+    for result in tweets:
+        relast_id_return = result.id_str
+
+    return relast_id_return
+
+#JSと接続
 def new_client(client, server):
 
     global tweet_send_cnt
     global random_list
     global tweet_list_text
     global random_list
+    global checkid
+    global relast_id
+    global relast_id_tmp
+
+    tweet_send_cnt = 0
+    tweet_list_text = []
+    random_list = []
+
+    tweet_list_text = search_word_api(search_word, '0')
+    relast_id_tmp = relast_id
+    checkid = relast_id
 
     print('\nConnection is complete\n接続が完了しました\n')
-    time.sleep(2)
+    time.sleep(1)
     server.send_message(client, '接続完了')
 
+#JSから切断
 def client_left(client, server):
     print('\nDisconnected.\n切断されたため終了します\n')
 
+#JSからのメッセージ受信
 def message_received(client, server, message):
 
     global tweet_send_cnt
@@ -121,11 +147,18 @@ def message_received(client, server, message):
     global random_list
     global searchword_loop_cnt
     global relast_id
+    global checkid
+    global checkid_loop
+    global checkid_sw
+    global relast_id_tmp
 
+    #JSからRTの送信が来た場合ツイートを送る
     if message == 'RT':
 
+        #searchword_loop_cnt = 0 は取得できるツイートが存在しない
         if searchword_loop_cnt != 0:
 
+            #すべてのツイートストックを送信し終えた
             if tweet_send_cnt == searchword_loop_cnt:
                 time.sleep(0.5)
 
@@ -133,42 +166,64 @@ def message_received(client, server, message):
                 tweet_list_text = []
                 random_list = []
 
+                #idを指定してにツイートを取得
                 tweet_list_text = search_word_api(search_word, relast_id)
 
-                if searchword_loop_cnt != 0:
+                #前回取得したツイートより最新のツイートが存在する場合
+                if relast_id_tmp != relast_id:
+                    relast_id_tmp = relast_id
+
+                    checkid = relast_id
+                    checkid_loop = 0
 
                     while True:
                         random_int = random.randint(0,searchword_loop_cnt -1)
                         if random_int not in random_list:
                             server.send_message(client, tweet_list_text[random_int])
+                            checkid_loop += 1
                             break
 
                     random_list.append(random_int)
                     tweet_send_cnt += 1
 
+                #前回取得したツイートより最新のツイートが存在しない場合
                 else:
 
                     tweet_send_cnt = 0
                     tweet_list_text = []
                     random_list = []
+                    checkid_loop = 0
 
+                    #idを指定せずにツイートを取得
                     tweet_list_text = search_word_api(search_word, '0')
 
                     while True:
                         random_int = random.randint(0,searchword_loop_cnt -1)
                         if random_int not in random_list:
                             server.send_message(client, tweet_list_text[random_int])
+                            checkid_loop += 1
                             break
 
                     random_list.append(random_int)
                     tweet_send_cnt += 1
 
+            #まだ未送信のツイートがある
             else:
+
+                #5回目のループで最新のツイートがあるかidを取得
+                if checkid_loop >= 5:
+                    checkid = checkid_relast(search_word)
+                    checkid_loop = 0
+
+                #取得したidを検証/最新のものであれば強制再取得
+                if checkid != relast_id:
+                    searchword_loop_cnt = tweet_send_cnt + 1
 
                 while True:
                     random_int = random.randint(0,searchword_loop_cnt -1)
                     if random_int not in random_list:
                         server.send_message(client, tweet_list_text[random_int])
+                        checkid_loop += 1
                         break
 
                 random_list.append(random_int)
