@@ -28,5 +28,9 @@ MacOS版のリリースについては今の所予定はありません
 
 Wineで動いた！という方はご連絡いただければ幸いです
 
+## サポート
+
+Twitter: https://twitter.com/cubezeero
+
 ### License
 MIT License
