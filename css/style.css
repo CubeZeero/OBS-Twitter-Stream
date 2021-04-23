@@ -3,14 +3,15 @@
   /* Font変更場所 ↓ */
   font-family: 'Noto Sans JP', sans-serif;
 
-  font-size: 30px;
-  color: #ffffff;
+  font-size: 45px;
+  color: #000000;
   letter-spacing: 0;
 
   /* The following changes are prohibited
   以下変更禁止 */
   opacity: 0;
   white-space: nowrap;
-  margin-left: 250px
+  margin-left: 250px;
+  overflow: hidden;
 
 }
