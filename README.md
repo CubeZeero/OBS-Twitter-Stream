@@ -14,7 +14,7 @@ OBSなどの配信ソフトのブラウザソースで特定のキーワード�
 
 Windows版のみ
 
-[こちらから最新版をダウンロード (最新版 v1.2)](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/download/v1.2/obs-twitter-stream_v1.2.zip)
+[こちらから最新版をダウンロード (最新版 v1.3)](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/download/v1.3/obs-twitter-stream_v1.3.zip)
 
 不具合の修正などの最新情報は以下のツイートリストから確認してください
 
