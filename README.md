@@ -24,10 +24,6 @@ Windows版のみ
 
 MacOS版のリリースについては今の所予定はありません
 
-現在Wineでの動作を確認しています
-
-Wineで動いた！という方はご連絡いただければ幸いです
-
 ## サポート
 
 Twitter: https://twitter.com/cubezeero
