@@ -7,6 +7,8 @@ $(function(){
   var ws = new WebSocket("ws://127.0.0.1:10356/");
   ws.onmessage = function(message){
 
+    var window_w = window.innerWidth;
+
     var span = document.createElement('span');
 
     span.style.position = 'absolute';
@@ -24,11 +26,11 @@ $(function(){
 
     var text_width = span.clientWidth;
     var text_width_int = parseInt(text_width);
-    var text_scroll = 1920 - text_width_int
+    var text_scroll = window_w - text_width_int
 
     span.parentElement.removeChild(span);
 
-    if (text_width_int >= 1920) {
+    if (text_width_int >= window_w) {
 
       $("#twitter-text-main").text(message.data);
       $('#twitter-text-main').animate({opacity: 1},{queue: false,duration: 2000,easing: 'swing'});
