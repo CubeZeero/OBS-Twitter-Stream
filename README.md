@@ -2,7 +2,7 @@
 
 OBSなどの配信ソフトのブラウザソースで特定のキーワードを含んだツイートを表示します
 
-[![](https://github.com/CubeZeero/OBS-Twitter-Stream/blob/main/image/example_screen.gif?raw=true)]
+![](https://github.com/CubeZeero/OBS-Twitter-Stream/blob/main/image/example_screen.gif?raw=true)
 
 [![](https://img.shields.io/github/downloads/CubeZeero/OBS-Twitter-Stream/v1.3.5/total?style=flat-square)](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/tag/v1.3.5)
 
@@ -30,7 +30,7 @@ MacOS版のリリースについては今の所予定はありません
 
 現在後継ソフトとして「Tweetron」を開発中です
 
-[![](https://github.com/CubeZeero/OBS-Twitter-Stream/raw/main/image/tweetron.png)]
+![](https://github.com/CubeZeero/OBS-Twitter-Stream/raw/main/image/tweetron.png)
 
 ## サポート
 
