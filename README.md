@@ -4,7 +4,7 @@ OBSなどの配信ソフトのブラウザソースで特定のキーワード�
 
 ![exampleimage](https://github.com/CubeZeero/OBS-Twitter-Stream/blob/main/image/example_screen.gif?raw=true)
 
-![](https://img.shields.io/github/downloads/CubeZeero/OBS-Twitter-Stream/v1.3.5/total?style=flat-square)
+[![](https://img.shields.io/github/downloads/CubeZeero/OBS-Twitter-Stream/v1.3.5/total?style=flat-square)](https://github.com/CubeZeero/OBS-Twitter-Stream/releases/tag/v1.3.5)
 
 ## 使い方
 
