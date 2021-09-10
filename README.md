@@ -32,6 +32,8 @@ MacOS版のリリースについては今の所予定はありません
 
 ![](https://github.com/CubeZeero/OBS-Twitter-Stream/raw/main/image/tweetron.png)
 
+2021年内のリリースを目指しています
+
 ## サポート
 
 Twitter: https://twitter.com/cubezeero
