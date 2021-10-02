@@ -1,3 +1,15 @@
+# 後継ソフトTweetronについて
+
+OBS-Twitter-Streamの高機能版 Tweetron をリリースしました
+
+現在 Tweetron はベータテストとして配布しています
+
+ベータテストが終了次第こちらのOBS-Twitter-Streamの開発、保守を終了します
+
+Tweetronについてはこちらを御覧ください
+
+[https://github.com/CubeZeero/Tweetron](https://github.com/CubeZeero/Tweetron)
+
 # OBS-Twitter-Stream
 
 OBSなどの配信ソフトのブラウザソースで特定のキーワードを含んだツイートを表示します
@@ -25,14 +37,6 @@ Windows版のみ
 ## MacOS版について
 
 MacOS版のリリースについては今の所予定はありません
-
-## 後継ソフトについて
-
-現在後継ソフトとして「Tweetron」を開発中です
-
-![](https://github.com/CubeZeero/OBS-Twitter-Stream/raw/main/image/tweetron.png)
-
-2021年内のリリースを予定しています
 
 ## サポート
 
