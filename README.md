@@ -10,7 +10,7 @@ Tweetronについてはこちらを御覧ください
 
 [https://github.com/CubeZeero/Tweetron](https://github.com/CubeZeero/Tweetron)
 
-# OBS-Twitter-Stream
+## OBS-Twitter-Stream
 
 OBSなどの配信ソフトのブラウザソースで特定のキーワードを含んだツイートを表示します
 
