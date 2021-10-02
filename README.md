@@ -1,6 +1,6 @@
 # 後継ソフトTweetronについて
 
-OBS-Twitter-Streamの高機能版 Tweetron をリリースしました
+OBS-Twitter-Streamの高機能版　後継ソフト Tweetron をリリースしました
 
 現在 Tweetron はベータテストとして配布しています
 
