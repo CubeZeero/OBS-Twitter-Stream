@@ -1,12 +1,8 @@
 # 後継ソフトTweetronについて
 
-OBS-Twitter-Streamの高機能版　後継ソフト Tweetron をリリースしました
+OBS-Twitter-Streamの開発、保守を終了します
 
-現在 Tweetron はベータテストとして配布しています
-
-ベータテストが終了次第こちらのOBS-Twitter-Streamの開発、保守を終了します
-
-Tweetronについてはこちらを御覧ください
+今後はOBS-Twitter-Streamの高機能版　後継ソフト **Tweetron** を使用してください
 
 [https://github.com/CubeZeero/Tweetron](https://github.com/CubeZeero/Tweetron)
 
