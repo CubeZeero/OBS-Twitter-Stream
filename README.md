@@ -4,7 +4,7 @@ OBS-Twitter-Streamの開発、保守を終了します
 
 今後はOBS-Twitter-Streamの高機能版　後継ソフト **Tweetron** を使用してください
 
-[https://github.com/CubeZeero/Tweetron](https://github.com/CubeZeero/Tweetron)
+[https://github.com/CubeZeero/Tweetron](https://github.com/Tweetron/Tweetron)
 
 ## OBS-Twitter-Stream
 
